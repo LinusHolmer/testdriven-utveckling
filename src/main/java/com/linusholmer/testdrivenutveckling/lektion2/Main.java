@@ -1,8 +1,11 @@
 package com.linusholmer.testdrivenutveckling.lektion2;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
 
+        /*
         // Items
         String item1Name = "Laptop";
         double item1Price = 1000.00;
@@ -42,6 +45,26 @@ public class Main {
         double anotherTotalAfterDiscount = anotherTotalBeforeDiscount - anotherDiscountAmount;
         System.out.println("Another total before discount: $" + anotherTotalBeforeDiscount);
         System.out.println("Another total after discount: $" + anotherTotalAfterDiscount);
+
+ */
+
+        ArrayList<Bird> birds = new ArrayList<>();
+
+        Bird myBird = new Bird("Fågel");
+        Dog myDog = new Dog("Hund");
+
+       /*
+        birds.add(myBird);
+        birds.add(myDog);
+        System.out.println(birds.getFirst().getName());
+        */
+
+        ArrayList<Animal> animals = new ArrayList<>();
+
+        animals.add(myDog);
+        animals.add(myBird);
+
+        System.out.println(animals.getFirst().getName() +" " + animals.get(1).getName());
 
     }
 }
