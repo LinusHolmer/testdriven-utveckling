@@ -9,7 +9,7 @@
  */
 
 
-import CustomButton from "./CustomButton";
+import CustomButton, { ButtonState } from "./CustomButton";
 import {fireEvent, render} from "@testing-library/react";
 import "@testing-library/jest-dom"
 import "@testing-library/react"
@@ -65,6 +65,3 @@ describe("Custom Button Component States", () => {
         expect(customButtonComponent).toHaveClass(ButtonState.clicked)
     })
 })
-
-it("", () => {})
-test("", () => {})

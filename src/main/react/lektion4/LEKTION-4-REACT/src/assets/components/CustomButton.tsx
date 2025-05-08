@@ -7,7 +7,7 @@ import { useState } from "react"
 
 // ENUM - 3 different states for button
 // IDLE | HOVER | CLICKED
-enum ButtonState {
+export enum ButtonState {
     idle = "idle",
     hover = "hover",
     clicked = "clicked",
