@@ -1,45 +1,41 @@
 name: TDD_test_react_lektion4
 
 on:
- # Trigger the workflow on push to the 'main' branch
- push:
-   branches:
-     - main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
- # Trigger the workflow on a pull request targeting the 'main' branch
- pull_request:
-   branches:
-     - main
-
-# Describe the actual job
 jobs:
- build:
-   runs-on: ubuntu-latest
-   steps:
-     # Run your local code from VM
-     - name: checkout Runner
-       uses: actions/checkout@v2
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-     # Node JS version
-     - name: Set up Node.js
-       uses: actions/setup-node@v2
-       with:
-         node-version: '22.8.0'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '22.8.0'
 
-     # Cache node_modules to speed up future builds
-     - name: Cache node_modules
-       uses: actions/cache@v3
-       with:
-         path: node_modules
-         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-         restore-keys: |
-           ${{ runner.os }}-node-
-           ${{ runner.os }}-
+      - name: Change to React project directory
+        working-directory: src/main/react/lektion4/LEKTION-4-REACT
+        run: echo "Changed directory to React project"
 
-     # Install Dependencies
-     - name: Install dependencies
-       run: npm install
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: src/main/react/lektion4/LEKTION-4-REACT/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('src/main/react/lektion4/LEKTION-4-REACT/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-     # Run Tests
-     - name: Run tests
-       run: npm test 
+      - name: Install dependencies
+        working-directory: src/main/react/lektion4/LEKTION-4-REACT
+        run: npm install
+
+      - name: Run tests
+        working-directory: src/main/react/lektion4/LEKTION-4-REACT
+        run: npm test
