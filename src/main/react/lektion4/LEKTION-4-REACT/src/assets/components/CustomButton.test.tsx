@@ -61,7 +61,7 @@ describe("Custom Button Component States", () => {
         const customButtonComponent = getByText(buttonText)
 
         expect(customButtonComponent).toHaveClass(ButtonState.idle)
-        fireEvent.mouseEnter(customButtonComponent)
+        fireEvent.click(customButtonComponent)
         expect(customButtonComponent).toHaveClass(ButtonState.clicked)
     })
 })
